@@ -1,0 +1,51 @@
+<html>
+<body>
+    <h2>Welcome, {{ delivery.username }}</h2>
+
+    <form method="POST" action="{% url 'deliveryhome' %}">
+        {% csrf_token %}
+        <input type="submit" name="action" value="Your Profile">
+    </form>
+    <form method="POST" action="{% url 'deliveryhome' %}">
+        {% csrf_token %}
+        <input type="submit" name="action" value="Assigned Orders">
+    </form>
+    <form method="POST" action="{% url 'deliveryhome' %}">
+        {% csrf_token %}
+        <input type="submit" name="action" value="Past Order">
+    </form>
+    <form method="POST" action="{% url 'deliveryhome' %}">
+        {% csrf_token %}
+        <input type="submit" name="action" value="Logout">
+    </form>
+
+
+    {% if show %}
+        <h3>Your Details</h3>
+        <p>Name: {{ delivery.driver_name }}</p>
+        <p>Email: {{ delivery.user.email }}</p>
+        <p>Phone: {{ delivery.driver_phone_number }}</p>
+        <p>Address: {{ delivery.driver_current_location }}</p>
+    {% endif %}
+
+      {% if orders %}
+    {% for order in orders %}
+            <p>Order ID: {{ order.order_id }}</p>
+            <p>Status: {{ order.status }}</p>
+            <p>Total: ₹{{ order.total }}</p>
+            <p>Restaurant:{{ order.restaurant.restaurant_name }}</p>
+
+            {% if order.status == "assigned" %}
+                <form method="POST" action="{% url 'deliveryhome' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="action" value="pickup">
+                    <input type="hidden" name="order_id" value="{{ order.order_id }}">
+                    <button type="submit">Pickup</button>
+                </form>
+            {% endif %}
+    {% endfor %}
+{% endif %}
+ 
+
+
+

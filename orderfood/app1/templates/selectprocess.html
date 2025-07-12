@@ -1,0 +1,24 @@
+<html>
+    <body>
+        <center>
+                {% if menu %}
+                  <h3>Menu for {{ select_restaurant.restaurant_name }}</h3>
+                  <table>
+                   <tr><td> Item Name </td><td> Price </td></tr>
+                  {% for m in menu %}
+                  <tr>
+                  <td>{{ m.item_name }}</td>
+                  <td>{{ m.price }}</td>
+                  <td><img src="{{ m.image.url }}" alt="{{ m.item_name }}" width="60" height="50"></td>
+                  <td><a href="{% url 'onedisplay' %}?menu_id={{ m.menu_id }}">Views</a></td>
+                   </tr>
+                  {% endfor %}
+                  {% endif %}
+                  </table>
+                 </center>
+    </body>
+</html>       
+       
+
+       
+

@@ -1,0 +1,104 @@
+<html>
+    <body>
+        <h2>Welcome, {{ restaurant.username }}</h2>
+
+        <form method="POST" action="{% url 'restauranthome' %}">
+        {% csrf_token %}
+        <input type="submit" name="action" value="Restaurant Details">
+    </form>
+    <form method="POST" action="{% url 'restauranthome' %}">
+        {% csrf_token %}
+        <input type="submit" name="action" value="View Orders">
+    </form>
+    <form method="POST" action="{% url 'restauranthome' %}">
+        {% csrf_token %}
+        <input type="submit" name="action" value="Menu Details">
+    </form>
+    <form method="POST" action="{% url 'restauranthome' %}">
+        {% csrf_token %}
+        <input type="submit" name="action" value="Add Menus">
+    </form>
+     <form method="POST" action="{% url 'restauranthome' %}">
+        {% csrf_token %}
+        <input type="submit" name="action" value="Logout">
+    </form>
+    {% if menu %}
+                  <h3>Menu for {{ restaurant.restaurant_name }}</h3>
+                  <table>
+                   <tr><td> Item Name </td><td> Price </td></tr>
+                  {% for m in menu %}
+                  <tr>
+                  <td>{{ m.item_name }}</td>
+                  <td>{{ m.price }}</td>
+                  <td><img src="{{ m.image.url }}" alt="{{ m.item_name }}" width="60" height="50"></td>
+                  <td><a href="{% url 'onedisplay' %}?menu_id={{ m.menu_id }}">Delete</a></td>
+
+                   </tr>
+                  {% endfor %}
+                  {% endif %}
+                  </table>
+    {% if show %}
+        <h3>Restaurant Details</h3>
+        <p>Restaurant Name: {{ restaurant.restaurant_name }}</p>
+        <p>User Name: {{ restaurant.username }}</p>
+        <p>Email: {{ restaurant.user.email }}</p>
+        <p>Phone: {{ restaurant.restaurant_phone_number }}</p>
+        <p>Address: {{ restaurant.restaurant_address }}</p>
+    {% endif %}
+
+
+<tr>
+    <form method="POST" action="{% url 'assign_order' %}">
+        {% csrf_token %}
+        <table>
+
+          {% for order in orders %}
+          
+
+        <tr>
+            <th>Order ID</th>
+            <th>Customer</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Date</th>
+        </tr>
+        <tr>
+        <td>{{ order.order_id }}</td>
+        <td>{{ order.customer.user.username }}</td>
+        <td>{{ order.total }}</td>
+        <td>{{ order.status }}</td>
+        <td>{{ current_datetime|date:"d-m-Y H:i:s" }}</td>
+        <td>
+    <input type="hidden" name="order_id" value="{{ order.order_id }}">
+    <button type="submit" name="action" value="select">Select</button>
+</form>
+
+    </a>
+</td>
+
+        </td>
+    </form>
+</tr>
+
+{% endfor %}
+
+</table>
+</body>
+</html>
+
+            <!-- <input type="hidden" name="order_id" value="{{ order.order_id }}"> -->
+
+
+ <!-- <form method="POST" action="{% url 'restauranthome' %}">
+            {% csrf_token %}
+            <p><strong>Assign to delivery person:</strong></p> -->
+            <!-- <select name="driver_id" required> -->
+              <!-- <option value="">-- Select Driver --</option>
+              {% for driver in drivers %}
+                 <option value="{{ driver.driver_id }}">{{ driver.driver_name }}</option>
+              {% endfor %}
+            </select> -->
+    <!-- {% if order.driver %}
+            <p><strong>Assigned Driver:</strong> {{ order.driver.driver_name }} ({{ order.driver.driver_phone_number }})</p>
+        {% endif %} -->
+    <!-- </td> -->

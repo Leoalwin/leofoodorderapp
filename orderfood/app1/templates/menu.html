@@ -1,0 +1,37 @@
+<!-- <html>
+    <body>
+                    <h1>MENU ITEMS RESISTRATION </h1>
+                    <form method="POST" action="{% url 'menuprocess' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                    <p>Item Name:<INPUT type="text"name="iname"/></p>
+                    <p>Price:<INPUT type="text"name="price"/></p>
+                     <p>Restaurant:<select name="restaurant">
+                        {% for re in restaurant %}
+                         <option value="{{ re.restaurant_id }}">{{ re.restaurant_name }}</option>
+                            {% endfor %}
+                          </select> </p> -->
+                    <!-- <p>Restaurant id:<input type="hidden" name="restaurant_id" value="{{ restaurant.id }}"></p>
+                    <p>Upload Food Image:<input type="file" name="foodimage"> </p>
+                    <input type="submit"value="RESISTRATER"/>
+                 </form>
+    </body>
+</html>  -->
+
+<html>
+  <body>
+    <h1>MENU ITEMS REGISTRATION</h1>
+    <form method="POST" action="{% url 'menuprocess' %}" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <p>Item Name: <input type="text" name="iname" /></p>
+      <p>Price: <input type="text" name="price" /></p>
+
+      <!-- Hidden input with this user's restaurant ID -->
+      <input type="hidden" name="restaurant_id" value="{{ restaurant.restaurant.id }}">
+
+      <p>Upload Food Image: <input type="file" name="foodimage" /></p>
+
+      <input type="submit" value="REGISTER" />
+    </form>
+  </body>
+</html>

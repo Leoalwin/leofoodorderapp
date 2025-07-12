@@ -1,0 +1,19 @@
+<html>
+    <body>
+        <table>
+            <tr><td> Driver_id</td><td> Driver Name </td><td> Phone Number </td><td> Location </td></tr>
+         {% for dr in driver %}
+            <tr>
+                <td>{{ dr.driver_id }}</td>
+                <td>{{ dr.driver_name}}</td>
+                <td>{{ dr.driver_phone_number }}</td>
+                <td>{{ dr.driver_current_location }}</td>
+            </tr>
+            
+            {% endfor %}
+                
+           <tr><td><a href="foodorder">Go to Homepage</a></td></tr>
+            
+        </table>
+    </body>
+</html>

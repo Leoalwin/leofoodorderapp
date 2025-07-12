@@ -1,0 +1,61 @@
+<!-- <html>
+    <body>
+        <center>
+        <form method="POST">
+            {% csrf_token %}
+        <h2>Restaurant: {{ rname }}</h2>
+        
+        <table>
+            <tr><th>Item Name</th><th>Price</th><th>Quantity</th><th>Total</th></tr>
+            {% for item in cart %}
+            <tr>
+                <td>{{ item.item_name }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.total }}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+            <td><input type="submit"value="Clear"/></td>
+            <td><a href="payment">Order conform</a></td>
+            </center>
+        </tr>
+        </table>
+        </form>
+        
+    </body> -->
+<!-- </html> -->
+
+<html>
+  <body>
+    <center>
+      <form method="POST" action="{% url 'totalfood' %}">
+        {% csrf_token %}
+        <h2>Restaurant: {{ rname }}</h2>
+
+        <table border="1" cellpadding="8">
+          <tr>
+            <th>Item Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+          </tr>
+          {% for item in cart %}
+          <tr>
+            <td>{{ item.item_name }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.total }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+
+        <br><br>
+        <button type="submit" name="action" value="clear">Clear</button>
+        <button type="submit" name="action" value="confirm">Order Confirm</button>
+        <a href="{% url 'selectprocess' %}?restaurant_id={{ restaurant_id }}">ADD</a>
+
+      </form>
+    </center>
+  </body>
+</html>

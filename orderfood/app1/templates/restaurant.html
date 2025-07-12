@@ -1,0 +1,17 @@
+<html>
+    <body>
+        <center>
+                    <h1>RESTAURANT RESISTRATION </h1>
+                    <form method="POST" action="resprocess">
+                        {% csrf_token %}
+                    <p>Restaurant Name:<INPUT type="text"name="name"/></p>
+                    <p>Address:<INPUT type="text"name="address"/></p>
+                    <p>Phone Number:<INPUT type="text"name="phone"/></p>
+                    <p>User Name<INPUT type="text" name="uname"></p>
+                    <p>Email<INPUT type="email"name="email"/></p>
+                    <p>Password<INPUT type="text" name="password"></p>
+                    <input type="submit"value="RESISTRATER"/>
+                 </form>
+                 </center>
+    </body>
+</html>

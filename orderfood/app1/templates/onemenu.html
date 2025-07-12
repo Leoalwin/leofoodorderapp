@@ -1,0 +1,60 @@
+<html>
+    <body>
+          <h1>Restaurants</h1>
+            {% for r in restaurants %}
+              <p>
+                <a href="{% url 'selectprocess' %}?restaurant_id={{ r.restaurant_id }}">{{ r.restaurant_name }}</a>
+
+              </p>
+              {% endfor %}
+            </form>
+    </body>
+</html>
+        
+        <!-- <a href="{% url 'selectprocess' %} {{ r.restaurant_id }}">{{ r.restaurant_name }}</a> -->
+      
+
+
+
+
+
+
+            <!-- <p>Restaurant:<select name="restaurant" onchange="this.form.submit()">
+              <option>Select Restaurant</option>
+                {% for re in restaurant %}
+                 <option value="{{ re.restaurant_id }}">
+                     {{ re.restaurant_name }}</option>
+                    {% endfor %}
+                  </select> </p>
+            </form>  -->
+            
+            
+
+
+
+
+
+
+
+
+            <!-- {% if menu %}
+              <h3>Menu for {{ select_restaurant.restaurant_name }}</h3>
+               <table>
+                <tr><td> Item Name </td><td> Price </td></tr>
+                 {% for m in menu %}
+                 <tr>
+                 <td>{{ m.item_name }}</td>
+                 <td>{{ m.price }}</td>
+                 <td><img src="{{ m.image.url }}" alt="{{ m.item_name }}" width="60" height="50"></td>
+                 <td><a href="{% url 'onedisplay' %}?menu_id={{ m.menu_id }}">Views</a></td>
+                </tr>
+                 {% endfor %}
+                 {% endif %}
+              </table> -->
+         </center>
+    </body>
+</html>
+
+
+
+

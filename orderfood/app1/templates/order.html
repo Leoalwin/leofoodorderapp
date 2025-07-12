@@ -1,0 +1,20 @@
+<html>
+    <body>
+      <center>
+        <table>
+           <form method="POST" action="{% url 'selectfood' %}">
+            {% csrf_token %}
+            <tr><th colspan="2"><h2>Order Details</h2></th></tr>
+            <tr><td>Retaurant Name</td><td> {{ menu.restaurants }}</td></tr>
+            <tr><td>Item Name</td><td> {{ menu.item_name }}</td></tr>
+            <tr><td>Price </td><td>{{ menu.price }}</td></tr>
+            <tr><td>Quantity </td><td>{{ menu.quantity }}</td></tr>
+            <tr><td>Total Price</td><td>{{ menu.total }}</td></tr>
+            <tr><td><a href="totalfood">conform</a></p></td></tr>
+            
+          </form>
+        </center>
+  </body>
+ </html> 
+      <!-- <tr><td><a href="{% url 'selectprocess' %}?restaurant_id={{ menu.restaurant }}">Go Back</a></td></tr> --> 
+

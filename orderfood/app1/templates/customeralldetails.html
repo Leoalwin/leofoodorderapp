@@ -1,0 +1,21 @@
+<html>
+    <body>
+        <table>
+            <tr><td> Customer_id</td><td>Customer Name</td><td>Email</td><td>Password</td><td>Phone Number</td><td>Address </td></tr>
+         {% for cu in cust %}
+            <tr>
+                <td>{{ cu.user }}</td>
+                <td>{{ cu.customer_email }}</td>
+                <td>{{ cu.customer_password }}</td>
+                <td>{{ cu.customer_phone_number }}</td>
+                <td>{{ cu.customer_address }}</td>
+
+            </tr>
+            
+            {% endfor %}
+                
+           <tr><td><a href="foodorder">Go to Homepage</a></td></tr>
+            
+        </table>
+    </body>
+</html>

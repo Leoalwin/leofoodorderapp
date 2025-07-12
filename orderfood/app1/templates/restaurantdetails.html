@@ -1,0 +1,19 @@
+<html>
+    <body>
+        <table>
+            <tr><td> Restaurant_id</td><td> Restaurant Name</td><td> Address</td><td> Phone Number</td></tr>
+         {% for re in restaurant %}
+            <tr>
+                <td>{{ re.restaurant_id }}</td>
+                <td>{{ re.restaurant_name }}</td>
+                <td>{{ re.restaurant_address }}</td>
+                <td>{{ re.restaurant_phone_number }}</td>
+            </tr>
+            
+            {% endfor %}
+                
+           <tr><td><a href="foodorder">Go to Homepage</a></td></tr>
+            
+        </table>
+    </body>
+</html>

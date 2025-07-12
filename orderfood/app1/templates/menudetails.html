@@ -1,0 +1,23 @@
+<html>
+    <body>
+        <table>
+<tr><td> Menu_id</td><td> Item Name </td><td> Price </td><td> Restaurant </td><td> Food Image </td></tr>
+         {% for me in menu %}
+            <tr>
+                
+                <td>{{ me.menu_id }}</td>
+                <td>{{ me.item_name }}</td>
+                <td>{{ me.price }}</td>
+                <td>{{ me.restaurant }}</td>
+                <td>{% if me.image %}
+                    <img  src="{{ me.image.url }}" alt="{{me.item_name}}" width="80px" height="50px">
+                    {% endif %}</td>
+             </tr>
+              {% endfor %}
+        
+                    <tr><td><a href="foodorder">Go to Homepage</a></td></tr>                    
+                </table>
+            </body>
+        </html>
+        
+        

@@ -1,0 +1,35 @@
+<html>
+    <body>
+        <center>
+
+
+
+        <form method="POST"action="{% url 'ratingadd' %}"></form>
+           {% csrf_token %}
+
+           <p>User:
+             <select name="user" >
+                 {% for user in users %}
+                     <option value="{{ user.user_id }}">{{ user.user_name }}</option>
+                       {% endfor %}
+             </select></p>
+
+            <p> Restaurant:
+                <select name="restaurant" >
+                   {% for r in restaurants %}
+                     <option value="{{ r.restaurant_id }}">{{ r.restaurant_name }}</option>
+                     {% endfor %}
+                    </select></p>
+
+                <p>Rating (1-5):
+                    <select name="stars">
+                     {% for i in "12345" %}
+                      <option value="{{ i }}">{{ i }}★</option>
+                          {% endfor %}
+                </select></p>
+
+    <button type="submit">Submit Rating</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!-- <!DOCTYPE html>
+<html>
+    <body>
+        {% if user.is_authenticated %}
+            <p>Welcome, {{ user.username }}</p>
+
+            {% if role == "Customers" %}
+                <p><a href="{% url 'restaurant_details' %}">All RESTAURANT DETAILS</a></p>
+            {% endif %}
+
+        {% endif %}
+    </body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+    <body>
+        {% if user.is_authenticated %}
+            <h2> <p>Welcome, {{ user.username }}</p> belongs to {{  role }}</h2>
+            {% if role == "Customers" %}
+                <p><a href="{% url 'restaurant_details' %}">View All Restaurant Details</a></p>
+
+                <h3>Your Details:</h3>
+                <p>Email: {{ customer.customer_email }}</p>
+                <p>Phone: {{ customer.customer_phone_number }}</p>
+                <p>Address: {{ customer.customer_address }}</p>
+
+            {% elif role == "Restaurants" %}
+                <p><a href="{% url 'customer_details' %}">View All Customer Details</a></p>
+            {% endif %}
+
+        {% endif %}
+    </body>
+</html>
+

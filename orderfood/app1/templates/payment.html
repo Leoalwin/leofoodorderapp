@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <center>
+                    <h1>PAYMENT PROCESS</h1>
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <p>Payment Method:<select name="payment">
+                            <option value="credit">credit</option>
+                            <option value="card">card</option>
+                            <option value="cash">cash</option>
+                            </select>
+                            </p>
+                        <p>Amount:<INPUT type="number"name="amount"/></p>
+
+                        <button type="submit">Submit Payment</button>
+                    </form>
+                    </center>
+       </body>
+   </html>
+                    

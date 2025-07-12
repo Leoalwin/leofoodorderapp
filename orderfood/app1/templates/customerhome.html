@@ -1,0 +1,97 @@
+ <!-- <html>
+<body>
+    <h2>Welcome, {{ customer.customer_name }}</h2>
+    <p>Email: {{ customer.user.email }}</p>
+    <p>Phone: {{ customer.customer_phone_number }}</p>
+
+    <h3>Restaurant List:</h3>
+    {% for r in restaurants %}
+    <p><a href="{% url 'selectprocess' %}?restaurant_id={{ r.restaurant_id }}">{{ r.restaurant_name }}</a></p>
+     {% endfor %} -->
+<!-- <html>
+    <body>
+        <form>
+         <h2>Welcome, {{ customer.customer_name }}</h2>
+        <form method="POST" action="customerhome">
+         <input type="submit"value="Me"/>
+        </form>
+        
+        <form>
+        <form method="POST" action="customerhome">
+        <input type="submit"value="Orderfood"/>
+        </form>
+    </body>
+
+
+    <form>
+    <p>Name:{{ customer.customer_name }}</p>
+    <p>Email: {{ customer.user.email }}</p>
+    <p>Phone: {{ customer.customer_phone_number }}</p>
+    </form>
+
+</body> 
+  -->
+<html>
+<body>
+    <h2>Welcome, {{ customer.username }}</h2>
+
+    <form method="POST" action="{% url 'customerhome' %}">
+        {% csrf_token %}
+        <input type="submit" name="action" value="Me">
+    </form>
+
+    <form method="POST" action="{% url 'customerhome' %}">
+        {% csrf_token %}
+        <input type="submit" name="action" value="Orderfood">
+    </form>
+
+    <form method="POST" action="{% url 'customerhome' %}">
+        {% csrf_token %}
+        <input type="submit" name="action" value="Current Order">
+    </form>
+    
+    <form method="POST" action="{% url 'customerhome' %}">
+        {% csrf_token %}
+        <input type="submit" name="action" value="Order History">
+    </form>
+    <form method="POST" action="{% url 'customerhome' %}">
+        {% csrf_token %}
+        <input type="submit" name="action" value="Logout">
+    </form
+
+
+    {% if show %}
+        <h3>Your Details</h3>
+        <p>Name: {{ customer.customer_name }}</p>
+        <p>Email: {{ customer.user.email }}</p>
+        <p>Phone: {{ customer.customer_phone_number }}</p>
+        <p>Address: {{ customer.customer_address }}</p>
+    {% endif %}
+
+    {% if restaurants %}
+         <h3>Restaurant List:</h3>
+       {% for r in restaurants %}
+        <p><a href="{% url 'selectprocess' %}?restaurant_id={{ r.restaurant_id }}">{{ r.restaurant_name }}</a></p>
+        {% endfor %} 
+    {% endif %}
+
+    {% if current_orders %}
+    <h3>Current Orders</h3>
+    <ul>
+        {% for order in current_orders %}
+            <li>Order ID: {{ order.order_id }} | Total: {{ order.total }} | Date: {{ order.date }}</li>
+        {% empty %}
+            <li>No current orders.</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% if order_history %}
+    <h3>Order History</h3>
+    {% for order in order_history %}
+        <p>Order ID: {{ order.order_id }} | Total: ₹{{ order.total }} | Status: {{ order.status }}</p>
+    {% endfor %}
+{% endif %}
+
+</body>
+</html>

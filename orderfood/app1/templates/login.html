@@ -1,11 +1,14 @@
 <html>
-    <body>
+    <body style="background-color: blueviolet;">
         <form method="POST" action="{% url 'login' %}">
            {% csrf_token %}
-        <p>Name<INPUT type="text" name="uname"></p>
-        <p>Password<INPUT type="text" name="password"></p>
-         <button type="submit">Login</button>
-       </form>
+           <CENTER> <table>
+            <th> <td> LOGIN </td></th> 
+        <tr> <td>Name</td><td><INPUT type="text" name="uname"></td> </tr>
+        <tR><td>Password</td> <td><INPUT type="text" name="password"></td></tr>
+         <TR><TD><button type="submit">Login</button> </TD></TR>
+       </table>
+        </form>
 
   {% if error %}
   <p style="color: red;">{{ error }}</p>
